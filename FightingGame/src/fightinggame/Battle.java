@@ -6,7 +6,7 @@ public class Battle extends javax.swing.JFrame {
     private Endgame otherWindow;
     
     Cutlass enemy = new Cutlass("Dobby", 100, 5);
-    Fighter player = new Fighter("Chris", 40, 5);
+    Fighter player = new Fighter("Chris", 100, 5);
     public Battle(StartGame s) {
         initComponents();
         firstWindow = s;
@@ -26,6 +26,8 @@ public class Battle extends javax.swing.JFrame {
         playerHealthBar = new javax.swing.JProgressBar();
         enemyHealthBar = new javax.swing.JProgressBar();
         btnSpecialAttack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtBattle = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/cutlass.gif"))); // NOI18N
@@ -57,6 +59,12 @@ public class Battle extends javax.swing.JFrame {
         });
         getContentPane().add(btnSpecialAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 210, 100));
 
+        txtBattle.setColumns(20);
+        txtBattle.setRows(5);
+        jScrollPane1.setViewportView(txtBattle);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 250, 280));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/backgroundBattle.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 640));
 
@@ -65,14 +73,15 @@ public class Battle extends javax.swing.JFrame {
 
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
         player.normalAttack(enemy);
+        txtBattle.append("Player1 dealt " + player.getAtk() + " to Player2\n");
         updateInfo();
         
         if(enemy.getHp() <= 0 || player.getHp() <= 0){
-        if(otherWindow == null){
+            if(otherWindow == null){
             otherWindow = new Endgame(this);
-        }
-        otherWindow.setVisible(true);
-        this.setVisible(false);
+            }
+            otherWindow.setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btnAttackActionPerformed
     
@@ -83,6 +92,14 @@ public class Battle extends javax.swing.JFrame {
     private void btnSpecialAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpecialAttackActionPerformed
         player.specialAttack(enemy);
         updateInfo();
+        txtBattle.append("Player1 dealt " + player.getAtk() + " to Player2\n");
+        if(enemy.getHp() <= 0 || player.getHp() <= 0){
+            if(otherWindow == null){
+            otherWindow = new Endgame(this);
+            }
+            otherWindow.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnSpecialAttackActionPerformed
 
     /**
@@ -98,6 +115,8 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JProgressBar playerHealthBar;
+    private javax.swing.JTextArea txtBattle;
     // End of variables declaration//GEN-END:variables
 }
