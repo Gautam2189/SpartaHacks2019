@@ -25,6 +25,41 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/fightinggame/logo.png"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="380" height="150"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="33" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/fightinggame/startBtn.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+            <MatteColorBorder>
+              <Color PropertyName="color" blue="cc" green="0" red="0" type="rgb"/>
+            </MatteColorBorder>
+          </Border>
+        </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="710" y="380" width="190" height="120"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

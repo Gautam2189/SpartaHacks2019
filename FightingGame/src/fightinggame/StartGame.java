@@ -27,10 +27,21 @@ public class StartGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/logo.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 150));
+
+        jButton1.setBackground(new java.awt.Color(51, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/startBtn.png"))); // NOI18N
+        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 204)));
+        jButton1.setBorderPainted(false);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 190, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/backgroundStart.gif"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 540));
@@ -74,6 +85,8 @@ public class StartGame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

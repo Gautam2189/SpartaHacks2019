@@ -24,5 +24,12 @@ public class Cutlass {
     public void setAtk(int attack){
         atk = attack;
     }
-    
+    public void normalAttack(Fighter f){
+        int health = f.getHp();
+        f.setHp(health - atk);
+    }
+    public void specialAttack(Fighter f){
+        int health = f.getHp();
+        f.setHp(health - (atk + 5));
+    }
 }
