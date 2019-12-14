@@ -7,8 +7,5 @@ package fightinggame;
  */
 public class FightingGame {
 
-    /**
-     * @param args the command line arguments
-     */
     
 }
