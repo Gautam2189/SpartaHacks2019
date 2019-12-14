@@ -13,6 +13,7 @@ public class Fighter {
    protected String name;
     protected int hp;
     protected int atk;
+    protected int rNum;
     
     public Fighter(String Sname, int health, int attack){
         name = Sname;
@@ -26,6 +27,9 @@ public class Fighter {
     public void setHp(int health){
         hp = health;
     }
+    public int getRand(){
+        return rNum;
+    }
     public int getAtk(){
         return atk;
     }
@@ -37,8 +41,12 @@ public class Fighter {
         f.setHp(health - atk);
     }
     public void specialAttack(Cutlass f){
-        int rNum = (int)(Math.random() * 10) + 1;
+        rNum = (int)(Math.random() * 10) + 5;
         int health = f.getHp();
-        f.setHp(health - (atk + rNum));
+        f.setHp(health - rNum);
+    }
+    public void heal(Fighter a){
+        int health = a.getHp();
+        a.setHp(health + 20);
     }
 }
