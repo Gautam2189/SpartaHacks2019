@@ -10,5 +10,5 @@ package fightinggame;
  * @author Dan
  */
 public class Fighter {
-    
+   
 }
