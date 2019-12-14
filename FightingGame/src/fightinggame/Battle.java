@@ -3,12 +3,16 @@ package fightinggame;
 
 public class Battle extends javax.swing.JFrame {
     StartGame firstWindow;
-    /**
-     * Creates new form Battle
-     */
+    private Endgame otherWindow;
+    
+    Cutlass enemy = new Cutlass("Dobby", 100, 5);
+    Fighter player = new Fighter("Chris", 40, 5);
     public Battle(StartGame s) {
         initComponents();
         firstWindow = s;
+        
+        enemyHealthBar.setValue(enemy.getHp());
+        playerHealthBar.setValue(player.getHp());
     }
 
     @SuppressWarnings("unchecked")
@@ -18,9 +22,10 @@ public class Battle extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        PlayerProgressBar = new javax.swing.JProgressBar();
-        enemyProgressBar = new javax.swing.JProgressBar();
+        btnAttack = new javax.swing.JButton();
+        playerHealthBar = new javax.swing.JProgressBar();
+        enemyHealthBar = new javax.swing.JProgressBar();
+        btnSpecialAttack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/cutlass.gif"))); // NOI18N
@@ -34,15 +39,23 @@ public class Battle extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/cutlass.gif"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 180, 250));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/attakBtn.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAttack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/attakBtn.png"))); // NOI18N
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAttackActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 210, 100));
-        getContentPane().add(PlayerProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 220, 60));
-        getContentPane().add(enemyProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 220, 60));
+        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, 210, 100));
+        getContentPane().add(playerHealthBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 220, 60));
+        getContentPane().add(enemyHealthBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 220, 60));
+
+        btnSpecialAttack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/attakBtn.png"))); // NOI18N
+        btnSpecialAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSpecialAttackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSpecialAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 210, 100));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fightinggame/backgroundBattle.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 640));
@@ -50,9 +63,27 @@ public class Battle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
+        player.normalAttack(enemy);
+        updateInfo();
+        
+        if(enemy.getHp() <= 0 || player.getHp() <= 0){
+        if(otherWindow == null){
+            otherWindow = new Endgame(this);
+        }
+        otherWindow.setVisible(true);
+        this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnAttackActionPerformed
+    
+    private void updateInfo(){
+        enemyHealthBar.setValue(enemy.getHp());
+        playerHealthBar.setValue(player.getHp());
+    }
+    private void btnSpecialAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpecialAttackActionPerformed
+        player.specialAttack(enemy);
+        updateInfo();
+    }//GEN-LAST:event_btnSpecialAttackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -60,12 +91,13 @@ public class Battle extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JProgressBar PlayerProgressBar;
-    private javax.swing.JProgressBar enemyProgressBar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAttack;
+    private javax.swing.JButton btnSpecialAttack;
+    private javax.swing.JProgressBar enemyHealthBar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JProgressBar playerHealthBar;
     // End of variables declaration//GEN-END:variables
 }

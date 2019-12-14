@@ -37,7 +37,8 @@ public class Fighter {
         f.setHp(health - atk);
     }
     public void specialAttack(Cutlass f){
+        int rNum = (int)(Math.random() * 10) + 1;
         int health = f.getHp();
-        f.setHp(health - (atk + 5));
+        f.setHp(health - (atk + rNum));
     }
 }
